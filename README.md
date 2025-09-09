@@ -46,53 +46,75 @@ $ npm run start:prod
 
 ## Run tests
 
-```bash
-# unit tests
-$ npm run test
+# PetCare
+Tarea 3 del curso en DMC
 
-# e2e tests
-$ npm run test:e2e
+Aqui dejo los endpoint para realizar las pruebas en POSTMAN
 
-# test coverage
-$ npm run test:cov
-```
 
-## Deployment
+=== OWNERS ==========================================================================
+GET
+http://localhost:3000/owners/2
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+GET (ownerId con 5 mascotas registradas)
+http://localhost:3000/pets/owner/3
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+POST
+http://localhost:3000/owners
+{
+    "name": "Ryan Fire",
+    "email": "yryan@mail.com",
+    "phone": "985744777",
+    "address": "Av Larco 154"
+}
 
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
 
-## Resources
+=== PETS ==========================================================================
+GET
+http://localhost:3000/pets/1
 
-Check out a few resources that may come in handy when working with NestJS:
+POST (lanza error que ownerId tiene 5 mascotas)
+http://localhost:3000/pets
+{
+    "name": "Lassie",
+    "species": "cat",
+    "age": "8",
+    "breed": "gato",
+    "ownerId": 3,
+    "isVaccinated": "false",
+    "lastVaccinationDate": null
+}
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
 
-## Support
+=== APPOINTMENTS ==========================================================================
+GET
+http://localhost:3000/appointments/3
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+POST
+http://localhost:3000/appointments (lanza error Conflicto de fecha y hora con el mismo veterinario Dra. Salazar)
+{
+    "petId": 1,
+    "veterinarian": "Dra. Salazar",
+    "appointmentDate": "2025-09-25T16:00:00.000Z",
+    "service": "surgery"
+}
 
-## Stay in touch
+POST
+http://localhost:3000/appointments (lanza error para Cirugia debe estar vacunada la mascota)
+{
+    "petId": 2,
+    "veterinarian": "Dra. Salazar",
+    "appointmentDate": "2025-09-25T15:34:00.000Z",
+    "service": "surgery"
+}
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
 
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+POST
+http://localhost:3000/appointments (lanza error conflicto de horario)
+{
+    "petId": 4,
+    "veterinarian": "Dra. Salazar",
+    "appointmentDate": "2025-09-25T16:00:00.000Z",
+    "service": "surgery"
+}
