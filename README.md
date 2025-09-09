@@ -2,13 +2,13 @@
 ## PetCare
 Tarea 3 del curso en DMC
 
-## Project setup
+## Instalar dependencias
 
 ```bash
 $ npm install
 ```
 
-## Compile and run the project
+## Ejecutar proyecto
 
 ```bash
 # development
@@ -21,7 +21,7 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Run tests
+## Test en Postman
 
 
 Aqui dejo los endpoint para realizar las pruebas en POSTMAN
@@ -94,4 +94,5 @@ http://localhost:3000/appointments (lanza error conflicto de horario)
     "service": "surgery"
 }
 ```
+
 
