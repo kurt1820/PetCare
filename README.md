@@ -26,7 +26,7 @@ $ npm run start:prod
 
 Aqui dejo los endpoint para realizar las pruebas en POSTMAN
 
-
+```bash
 === OWNERS ==========================================================================
 GET
 http://localhost:3000/owners/2
@@ -93,4 +93,5 @@ http://localhost:3000/appointments (lanza error conflicto de horario)
     "appointmentDate": "2025-09-25T16:00:00.000Z",
     "service": "surgery"
 }
+```
 
